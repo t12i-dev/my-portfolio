@@ -25,6 +25,8 @@ export type Person = {
   email: string;
   /** IANA time zone location */
   location: IANATimeZone;
+  /** Human-readable location for display (falls back to the time zone identifier) */
+  locationLabel?: string;
   /** Languages spoken */
   languages?: string[];
   /**
@@ -234,6 +236,10 @@ export interface Work extends BasePageConfig {}
  * @description Configuration for the Gallery page, including metadata, navigation label, and image list.
  */
 export interface Gallery extends BasePageConfig {
+  /** Visible page heading (falls back to `title`) */
+  headline?: string;
+  /** Words shown in the scrolling marquee under the heading */
+  marquee?: string[];
   /** List of images in the gallery */
   images: Array<{
     /** Image source path */
@@ -242,5 +248,7 @@ export interface Gallery extends BasePageConfig {
     alt: string;
     /** Image orientation (horizontal/vertical) */
     orientation: string;
+    /** Optional caption shown on hover */
+    caption?: string;
   }>;
 }

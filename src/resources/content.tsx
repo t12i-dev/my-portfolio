@@ -2,14 +2,15 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Nuclear",
+  lastName: "Nguyen",
+  name: `Nuclear Nguyen`,
+  role: "Digital Creator",
+  avatar: "/images/avatar-new.jpg",
+  email: "nuclear.designer.3dartist@gmail.com",
+  location: "Asia/Ho_Chi_Minh", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  locationLabel: "Ho Chi Minh City, Vietnam", // optional: Display name for the location
+  languages: ["English", "Vietnamese"], // optional: Leave the array empty if you don't want to display languages
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
 
@@ -24,27 +25,21 @@ const social: Social = [
   // Import new icons in /once-ui/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-    essential: true,
-  },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
+    link: "https://www.instagram.com/nuclear.nlv/",
+    essential: true,
   },
   {
     name: "Threads",
     icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.threads.com/@nuclear.nlv",
+    essential: true,
+  },
+  {
+    name: "Facebook",
+    icon: "facebook",
+    link: "https://www.facebook.com/NuclearNguyen",
     essential: true,
   },
   {
@@ -66,19 +61,18 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">State of Global Air</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/state-of-global-air-report",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName}, a {person.role.toLowerCase()} who crafts intuitive <br /> user experiences. After hours, I build my own projects.
     </>
   ),
 };
@@ -87,7 +81,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from ${person.locationLabel ?? person.location}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -104,7 +98,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
+        {person.firstName} is a {person.locationLabel ?? person.location.split("/")[1]?.replaceAll("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
         into simple, elegant design solutions. Their work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
@@ -132,7 +126,7 @@ const about: About = {
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "Project image",
             width: 16,
             height: 9,
           },
@@ -161,12 +155,8 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "FPT University HCMC",
+        description: <>Digital Art & Design.</>,
       },
     ],
   },
@@ -177,7 +167,7 @@ const about: About = {
       {
         title: "Figma",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Able to prototype in Figma with unnatural speed.</>
         ),
         tags: [
           {
@@ -204,7 +194,7 @@ const about: About = {
       {
         title: "Next.js",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Building next gen apps with Next.js + Supabase.</>
         ),
         tags: [
           {
@@ -257,6 +247,8 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
+  // headline: "Selected work and moments",
+  marquee: ["Data Visualization", "Illustration", "Collage", "Poster Design", "Digital Art", "Photography"],
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
@@ -299,6 +291,42 @@ const gallery: Gallery = {
       src: "/images/gallery/vertical-3.jpg",
       alt: "image",
       orientation: "vertical",
+    },
+    {
+      src: "/images/gallery/vinh-1.jpg",
+      alt: "Detail of the Southeast Asia risk factor chart",
+      orientation: "vertical",
+      caption: "State of Global Air — risk factors",
+    },
+    {
+      src: "/images/gallery/vinh-2.jpg",
+      alt: "Title section of the State of Global Air poster",
+      orientation: "vertical",
+      caption: "State of Global Air — title",
+    },
+    {
+      src: "/images/gallery/vinh-3.jpg",
+      alt: "Flower-like glyphs showing deaths by gender",
+      orientation: "vertical",
+      caption: "State of Global Air — deaths by gender",
+    },
+    {
+      src: "/images/gallery/vinh-4.jpg",
+      alt: "Full State of Global Air poster mockup",
+      orientation: "vertical",
+      caption: "State of Global Air — full poster",
+    },
+    {
+      src: "/images/gallery/vinh-5.jpg",
+      alt: "Radial chart of risk factors and deaths",
+      orientation: "vertical",
+      caption: "State of Global Air — radial chart",
+    },
+    {
+      src: "/images/gallery/vinh-6.jpg",
+      alt: "Collage portrait with headphones and geometric shapes",
+      orientation: "vertical",
+      caption: "Shapes & Sound — collage portrait",
     },
   ],
 };

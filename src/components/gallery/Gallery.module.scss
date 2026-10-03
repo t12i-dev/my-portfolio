@@ -1,0 +1,39 @@
+// Hover states for gallery items. Only transform and opacity change.
+
+.zoom {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.caption {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: linear-gradient(to top, var(--page-background), var(--static-transparent));
+}
+
+.item:hover .zoom {
+  transform: scale(1.03);
+}
+
+.item:hover .caption,
+.item:focus-within .caption {
+  opacity: 1;
+}
+
+// Touch devices have no hover, so keep captions visible there.
+@media (hover: none) {
+  .caption {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom,
+  .caption {
+    transition: none;
+  }
+
+  .item:hover .zoom {
+    transform: none;
+  }
+}

@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Button,
   Column,
   Heading,
   Icon,
@@ -13,6 +12,7 @@ import {
   Row,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
+import { SocialButton } from "@/components/SocialButton";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -96,7 +96,7 @@ export default function About() {
             <Avatar src={person.avatar} size="xl" />
             <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
+              {person.locationLabel ?? person.location}
             </Row>
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
@@ -170,7 +170,7 @@ export default function About() {
                     item.link && (
                       <React.Fragment key={item.name}>
                         <Row s={{ hide: true }}>
-                          <Button
+                          <SocialButton
                             key={item.name}
                             href={item.link}
                             prefixIcon={item.icon}
@@ -181,7 +181,8 @@ export default function About() {
                           />
                         </Row>
                         <Row hide s={{ hide: false }}>
-                          <IconButton
+                          <SocialButton
+                            type="icon"
                             size="l"
                             key={`${item.name}-icon`}
                             href={item.link}

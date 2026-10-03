@@ -16,7 +16,6 @@
 
   /*
   /* Example setup for custom colors */
-  /* Generate at: https://once-ui.com/customize */
   /*
   --scheme-brand-100: #08002f;
   --scheme-brand-200:  #04025c;
@@ -67,3 +66,27 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+/* Gallery marquee: two identical groups in the track, shifted by -50% for a seamless loop */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+[data-gallery-marquee] {
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+
+[data-gallery-marquee-root]:hover [data-gallery-marquee] {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-gallery-marquee] {
+    animation: none;
+  }
+}
